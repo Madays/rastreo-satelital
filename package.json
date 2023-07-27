@@ -1,0 +1,20 @@
+{
+  "name": "rastreo-satelital",
+  "version": "1.0.0",
+  "description": "Rastrear la ubicación del satélite de Platzi en tiempo real.",
+  "main": "index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Madays/rastreo-satelital.git"
+  },
+  "author": "Maday",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Madays/rastreo-satelital/issues"
+  },
+  "homepage": "https://github.com/Madays/rastreo-satelital#readme",
+  "dependencies": {
+    "satellite.js": "^5.0.0"
+  }
+}
