@@ -1,1 +1,83 @@
-#map { height: 100vh; }
+:root {
+  /*LIGHT THEMES*/
+  --black: #080705ff;
+  --charcoal: #40434eff;
+  --wine: #702632ff;
+  --cordovan: #912f40ff;
+  --baby-powder: #fffffaff;
+
+  /*DARK THEMES*/
+  /* CSS HEX */
+  --black: #02010aff;
+  --oxford-blue: #04052eff;
+  --federal-blue: #140152ff;
+  --navy-blue: #22007cff;
+  --duke-blue: #0d00a4ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+/*MAP STYLES*/
+#map {
+  width: 100vw;
+  height: 100vh;
+
+  position: relative;
+  z-index: -1;
+}
+#map:nth-child(n) {
+  position: absolute;
+  z-index: -2;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  display: none;
+}
+
+.title {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.hud-container {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  bottom: 70px;
+}
+.hud-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 500px;
+  height: 60px;
+  background-color: var(--cordovan);
+
+  border-radius: 10px;
+  box-shadow: -1px 1px 10px var(--black);
+
+  color: var(--baby-powder);
+  font-size: 1rem;
+}
+.hud-box input {
+  background-color: var(--wine);
+}
+
+
