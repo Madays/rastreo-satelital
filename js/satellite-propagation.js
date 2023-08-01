@@ -1,4 +1,4 @@
-export function satelitePropagation(tleLine1, tleLine2) {
+export function position(tleLine1, tleLine2) {
     // Initialize a satellite record
     var satrec = satellite.twoline2satrec(tleLine1, tleLine2);
     //  Or you can use a JavaScript Date
@@ -44,6 +44,10 @@ export function satelitePropagation(tleLine1, tleLine2) {
     //  Convert the RADIANS to DEGREES.
     let longitudeDeg = satellite.degreesLong(longitude)
     let latitudeDeg  = satellite.degreesLat(latitude);
+    console.log({
+        lat: latitudeDeg,
+        long: longitudeDeg
+    })
     return {
             lat: latitudeDeg,
             long: longitudeDeg

@@ -1,12 +1,12 @@
 import {getTle} from './tle.js'
-import {satelitePropagation} from './satellite-propagation.js'
-import {map} from './map.js'
+import {position} from './satellite-propagation.js'
+import {showSatellite} from './map.js'
 
-getTle()
-    .then(tle => {
-        let latLong = satelitePropagation(tle[1], tle[2])
-        map(latLong.lat,latLong.long)
-    })
+setInterval(() => {
+    getTle()
+    .then(tle => position(tle[1], tle[2]))
+    .then(positionSatellite => showSatellite(positionSatellite.lat, positionSatellite.long))
     .catch(error => {
-        console.error('Error al obtener el TLE:', error);
-    });
+        console.error('Error:', error);
+    })
+}, 1000);
