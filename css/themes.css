@@ -144,7 +144,7 @@
 }
 
 .themes-accordion .themes-button {
-  width: 140px;
+  width: 100px;
   background-color: var(--charcoal);
   padding: 10px;
   border-radius: 10px;
