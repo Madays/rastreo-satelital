@@ -1,34 +1,29 @@
 import data from '../assets/data.js';
 let map = L.map("map");
-/*<<<<<<< HEAD
-
-let map = L.map('map')
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-=======*/
-
-/*// L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//   attribution:
-//     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-// }).addTo(map);
-
->>>>>>> 71ea506b2c0c7c59a5636ae6cc9c2d10c0cbdb0d*/
+map.setView([0,0], 3);
 let satelliteIcon = L.icon({
     iconUrl: '../assets/satellite.png',
-    //shadowUrl: 'leaf-shadow.png',
-
-    iconSize:     [38, 45], // size of the icon
-    //shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-    //shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconSize:     [38, 45],
+    iconAnchor:   [0, 0],
+    popupAnchor:  [-3, -76]
+});
+let satelliteIcon1 = L.icon({
+  iconUrl: '../assets/satellite.svg',
+  iconSize:     [38, 45],
+  iconAnchor:   [0, 0],
+  popupAnchor:  [-3, -76]
+});
+let satelliteIcon2 = L.icon({
+  iconUrl: '../assets/satellite2.svg',
+  iconSize:     [38, 45],
+  iconAnchor:   [0, 0],
+  popupAnchor:  [-3, -76]
 });
 
-let marker = L.marker([0,0],{icon: satelliteIcon}).addTo(map)
+let marker = L.marker([0,0],{icon:satelliteIcon}).addTo(map)
 
-//geojson de un pais
-let geojson = L.geoJson(data);
+//geojson del mundo
+let geojson = L.geoJson(data).addTo(map);
 
 function highlightFeature(layer) {
     //var layer = e.target;
@@ -47,13 +42,12 @@ function highlightFeature(layer) {
     info.update(layer.feature.properties);
 }
 
-
 function resetHighlight(layer) {
     geojson.resetStyle(layer);
     //info.update();
 }
 
-function zoomToFeature(e) {
+/*function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
 }
 
@@ -68,7 +62,7 @@ function onEachFeature(feature, layer) {
 geojson = L.geoJson(data, {
     //style: style,
     //onEachFeature: onEachFeature
-}).addTo(map);
+}).addTo(map);*/
 
 var info = L.control();
 
@@ -85,10 +79,8 @@ info.update = function (props) {
 
 info.addTo(map);
 
-
 export function showSatellite(lat,long){
     marker.setLatLng([lat, long])
-    map.setView([lat, long], 3);
 
     let markerInsidePolygon = false;
     geojson.eachLayer((layer) => {
@@ -122,10 +114,6 @@ export function pathSatellite(path){
 export function showSatelliteWithNoView(lat, long) {
   marker.setLatLng([lat, long]);
 }
-//  export function pathSatellite(path){
-//     let polyline = L.polyline(path, {color: 'red'}).addTo(map);
-//  }
-
 
 const radioButtons = document.getElementsByName("r");
 
@@ -178,7 +166,7 @@ function handleThemes(event) {
   if (selectedThemeValue === "1") {
     pageTitle.style.color = "var(--black)";
     currentMapLayer = mapStyle1.addTo(map);
-    marker.setIcon(satelliteIcon);
+    marker.setIcon(satelliteIcon2);
 
     mapContainer.style.backgroundColor = "white";
 
