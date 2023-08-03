@@ -7,11 +7,11 @@
 .form-themes {
   --radio-size: 20px;
   --border-radius: 10px;
-  background: var(--wine);
+  background: var(--secondary-color);
   width: 140px;
   /* height: 140px; */
   border-radius: var(--border-radius);
-  color: var(--baby-powder);
+  color: var(--fonts-color);
 
   display: grid;
   grid-template-columns: auto var(--radio-size);
@@ -47,7 +47,7 @@
   outline: none;
   margin: 0;
   cursor: pointer;
-  border: 2px solid var(--baby-powder);
+  border: 2px solid var(--fonts-color);
   background: transparent;
   border-radius: 50%;
   display: grid;
@@ -79,7 +79,7 @@
   position: relative;
   width: calc(100% / 2);
   height: calc(100% / 2);
-  background: var(--baby-powder);
+  background: var(--fonts-color);
   top: var(--y, 100%);
   transition: top 0.5s cubic-bezier(0.48, 1.97, 0.5, 0.63);
 }
@@ -145,14 +145,14 @@
 
 .themes-accordion .themes-button {
   width: 100px;
-  background-color: var(--charcoal);
+  background-color: var(--buttons-color);
   padding: 10px;
   border-radius: 10px;
   border: none;
-  color: var(--baby-powder);
-  box-shadow: -1px 1px 1px var(--black);
+  color: var(--fonts-color);
+  box-shadow: -1px 1px 1px var(--extra-color);
 }
 .themes-accordion .themes-button:hover {
-  background-color: var(--black);
+  background-color: var(--extra-color);
   cursor: pointer;
 }

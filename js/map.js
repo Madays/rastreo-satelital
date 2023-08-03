@@ -1,8 +1,19 @@
 import data from '../assets/data.js';
+let map = L.map("map");
+/*<<<<<<< HEAD
+
 let map = L.map('map')
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+=======*/
+
+/*// L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+//   attribution:
+//     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+// }).addTo(map);
+
+>>>>>>> 71ea506b2c0c7c59a5636ae6cc9c2d10c0cbdb0d*/
 let satelliteIcon = L.icon({
     iconUrl: '../assets/satellite.png',
     //shadowUrl: 'leaf-shadow.png',
@@ -35,6 +46,7 @@ function highlightFeature(layer) {
 
     info.update(layer.feature.properties);
 }
+
 
 function resetHighlight(layer) {
     geojson.resetStyle(layer);
@@ -107,6 +119,14 @@ export function pathSatellite(path){
 }
 
 
+export function showSatelliteWithNoView(lat, long) {
+  marker.setLatLng([lat, long]);
+}
+//  export function pathSatellite(path){
+//     let polyline = L.polyline(path, {color: 'red'}).addTo(map);
+//  }
+
+
 const radioButtons = document.getElementsByName("r");
 
 radioButtons.forEach((button) => {
@@ -146,8 +166,10 @@ let mapStyle3 = L.tileLayer(
 );
 
 let currentMapLayer = mapStyle1;
+currentMapLayer = mapStyle1.addTo(map);
 function handleThemes(event) {
   const selectedThemeValue = event.target.value;
+  const mapContainer = document.getElementById("map");
 
   if (currentMapLayer) {
     currentMapLayer.remove();
@@ -157,34 +179,49 @@ function handleThemes(event) {
     pageTitle.style.color = "var(--black)";
     currentMapLayer = mapStyle1.addTo(map);
     marker.setIcon(satelliteIcon);
+
+    mapContainer.style.backgroundColor = "white";
+
+    /* Changing root colors from css*/
+    document.documentElement.style.setProperty("--primary-color", "#912f40ff");
+    document.documentElement.style.setProperty(
+      "--secondary-color",
+      "#702632ff"
+    );
+    document.documentElement.style.setProperty("--fonts-color", "#fffffaff");
+    document.documentElement.style.setProperty("--buttons-color", "#40434eff");
+    document.documentElement.style.setProperty("--extra-color", "#080705ff");
   } else if (selectedThemeValue === "2") {
     pageTitle.style.color = "var(--baby-powder)";
     currentMapLayer = mapStyle2.addTo(map);
     marker.setIcon(satelliteIcon2);
+
+    mapContainer.style.backgroundColor = "black";
+
+    /* Changing root colors from css*/
+    document.documentElement.style.setProperty("--primary-color", "#7f7f7fff");
+    document.documentElement.style.setProperty(
+      "--secondary-color",
+      "#a5a5a5ff"
+    );
+    document.documentElement.style.setProperty("--fonts-color", "#595959ff");
+    document.documentElement.style.setProperty("--buttons-color", "#ccccccff");
+    document.documentElement.style.setProperty("--extra-color", "#f2f2f2ff");
   } else if (selectedThemeValue === "3") {
     pageTitle.style.color = "var(--baby-powder)";
     currentMapLayer = mapStyle3.addTo(map);
     marker.setIcon(satelliteIcon2);
+
+    mapContainer.style.backgroundColor = "black";
+
+    /* Changing root colors from css*/
+    document.documentElement.style.setProperty("--primary-color", "#140152ff");
+    document.documentElement.style.setProperty(
+      "--secondary-color",
+      "#22007cff"
+    );
+    document.documentElement.style.setProperty("--fonts-color", "#f2f2f2ff");
+    document.documentElement.style.setProperty("--buttons-color", "#0d00a4ff");
+    document.documentElement.style.setProperty("--extra-color", "#04052eff");
   }
 }
-
-// function cambiarColorSVG(color) {
-//   fetch("../assets/Satellite.js") // Reemplaza 'ruta/a/mi_archivo.svg' con la URL de tu archivo SVG
-//     .then((response) => response.text())
-//     .then((svgData) => {
-//       const parser = new DOMParser();
-//       const svgDocument = parser.parseFromString(svgData, "image/svg+xml");
-//       const svgElement = svgDocument.documentElement;
-
-//       svgElement.setAttribute("fill", color);
-
-//       const svgContainer = document.getElementById("svgContainer");
-//       svgContainer.innerHTML = "";
-//       svgContainer.appendChild(svgElement);
-//     })
-//     .catch((error) => {
-//       console.error("Error al cargar el archivo SVG:", error);
-//     });
-// }
-
-// cambiarColorSVG("red");

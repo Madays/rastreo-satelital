@@ -1,6 +1,6 @@
 import {getTle} from './tle.js'
 import {position} from './satellite-propagation.js'
-import {showSatellite, pathSatellite} from './map.js'
+import {showSatellite, pathSatellite, showSatelliteWithNoView} from './map.js'
 
 let path = []
 getTle()
@@ -20,6 +20,7 @@ setInterval(() => {
         path.push([positionSatellite.lat, positionSatellite.long])
         showSatellite(positionSatellite.lat, positionSatellite.long)
         pathSatellite(path)
+        showSatelliteWithNoView(positionSatellite.lat, positionSatellite.long)
     })
     .catch(error => {
         console.error('Error:', error);

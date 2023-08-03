@@ -1,23 +1,36 @@
 :root {
-  /*LIGHT THEMES*/
+  /*LIGHT THEME*/
   --black: #080705ff;
   --charcoal: #40434eff;
   --wine: #702632ff;
   --cordovan: #912f40ff;
   --baby-powder: #fffffaff;
 
-  /*DARK THEMES*/
-  /* CSS HEX */
+  /*DARK THEME*/
+  --davys-gray: #595959ff;
+  --gray: #7f7f7fff;
+  --silver: #a5a5a5ff;
+  --silver-2: #ccccccff;
+  --white-smoke: #f2f2f2ff;
+
+  /*NIGHT THEME*/
   --black: #02010aff;
   --oxford-blue: #04052eff;
   --federal-blue: #140152ff;
   --navy-blue: #22007cff;
   --duke-blue: #0d00a4ff;
+
+  /*COLORS TO USE*/
+  --primary-color: #912f40ff;
+  --secondary-color: #702632ff;
+  --fonts-color: #fffffaff;
+  --buttons-color: #40434eff;
+  --extra-color: #080705ff;
 }
 
-.leaflet-control-container {
+/* .leaflet-control-container {
   display: none;
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -67,26 +80,26 @@ body {
   justify-content: space-evenly;
   width: fit-content;
   height: 60px;
-  padding: 0px 30px;
-  background-color: var(--cordovan);
+  padding: 0px 10px;
+  background-color: var(--primary-color);
 
   border-radius: 10px;
-  box-shadow: -1px 1px 10px var(--black);
+  box-shadow: -1px 1px 10px var(--extra-color);
 
-  color: var(--baby-powder);
+  color: var(--fonts-color);
   font-size: 1rem;
 }
 .hud-box button {
   width: 20%;
-  background-color: var(--charcoal);
+  background-color: var(--buttons-color);
   padding: 10px;
   border-radius: 10px;
   border: none;
-  color: var(--baby-powder);
-  box-shadow: -1px 1px 1px var(--black);
+  color: var(--fonts-color);
+  box-shadow: -1px 1px 1px var(--extra-color);
 }
 .hud-box button:hover {
-  background-color: var(--black);
+  background-color: var(--extra-color);
   cursor: pointer;
 }
 
