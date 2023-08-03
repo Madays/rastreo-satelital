@@ -80,7 +80,7 @@ body {
   justify-content: space-evenly;
   width: fit-content;
   height: 60px;
-  padding: 0px 30px;
+  padding: 0px 10px;
   background-color: var(--primary-color);
 
   border-radius: 10px;
