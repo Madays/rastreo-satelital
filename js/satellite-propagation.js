@@ -44,10 +44,7 @@ export function position(tleLine1, tleLine2) {
     //  Convert the RADIANS to DEGREES.
     let longitudeDeg = satellite.degreesLong(longitude)
     let latitudeDeg  = satellite.degreesLat(latitude);
-    console.log({
-        lat: latitudeDeg,
-        long: longitudeDeg
-    })
+
     return {
             lat: latitudeDeg,
             long: longitudeDeg
