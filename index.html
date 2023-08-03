@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- leaflet library -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-     <script src="https://npmcdn.com/leaflet-geometryutil"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://npmcdn.com/leaflet-geometryutil"></script>
+
     <!-- styles -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/themes.css" />
     <title>Rastreo Satelital</title>
-</head>
-<body>
+  </head>
+  <body>
+    <h1 class="title">Platzi Space Program</h1>
     <div id="map"></div>
+    <div class="hud-container">
+      <div class="hud-box">
+        <!-- <button>Enfocar</button>
+        <button>Rastrear</button> -->
+        <!-- <button>Mostrar objetos</button> -->
+        <div class="themes-accordion">
+          <form class="form-themes active">
+            <label for="01">Light Theme</label>
+            <input id="01" type="radio" name="r" value="1" checked />
+            <label for="02">Dark Theme</label>
+            <input id="02" type="radio" name="r" value="2" />
+            <label for="03">Night Theme</label>
+            <input id="03" type="radio" name="r" value="3" />
+          </form>
+          <button class="themes-button" onclick="handleAppearanceThemes()">
+            Themes
+          </button>
+        </div>
+      </div>
+    </div>
     <script src="node_modules/satellite.js/dist/satellite.min.js"></script>
     <script src="js/index.js" type="module"></script>
-</body>
+    <script src="./js/themes.js"></script>
+  </body>
 </html>
