@@ -82,14 +82,44 @@ function handleThemes(event) {
     pageTitle.style.color = "var(--black)";
     currentMapLayer = mapStyle1.addTo(map);
     marker.setIcon(satelliteIcon);
+
+    /* Changing root colors from css*/
+    document.documentElement.style.setProperty("--primary-color", "#912f40ff");
+    document.documentElement.style.setProperty(
+      "--secondary-color",
+      "#702632ff"
+    );
+    document.documentElement.style.setProperty("--fonts-color", "#fffffaff");
+    document.documentElement.style.setProperty("--buttons-color", "#40434eff");
+    document.documentElement.style.setProperty("--extra-color", "#080705ff");
   } else if (selectedThemeValue === "2") {
     pageTitle.style.color = "var(--baby-powder)";
     currentMapLayer = mapStyle2.addTo(map);
     marker.setIcon(satelliteIcon2);
+
+    /* Changing root colors from css*/
+    document.documentElement.style.setProperty("--primary-color", "#7f7f7fff");
+    document.documentElement.style.setProperty(
+      "--secondary-color",
+      "#a5a5a5ff"
+    );
+    document.documentElement.style.setProperty("--fonts-color", "#595959ff");
+    document.documentElement.style.setProperty("--buttons-color", "#ccccccff");
+    document.documentElement.style.setProperty("--extra-color", "#f2f2f2ff");
   } else if (selectedThemeValue === "3") {
     pageTitle.style.color = "var(--baby-powder)";
     currentMapLayer = mapStyle3.addTo(map);
     marker.setIcon(satelliteIcon2);
+
+    /* Changing root colors from css*/
+    document.documentElement.style.setProperty("--primary-color", "#140152ff");
+    document.documentElement.style.setProperty(
+      "--secondary-color",
+      "#22007cff"
+    );
+    document.documentElement.style.setProperty("--fonts-color", "#f2f2f2ff");
+    document.documentElement.style.setProperty("--buttons-color", "#0d00a4ff");
+    document.documentElement.style.setProperty("--extra-color", "#04052eff");
   }
 }
 
