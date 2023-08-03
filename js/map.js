@@ -1,8 +1,9 @@
 let map = L.map("map");
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(map);
+// L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+//   attribution:
+//     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+// }).addTo(map);
+
 let satelliteIcon = L.icon({
   iconUrl: "../assets/Satellite.svg",
   //shadowUrl: 'leaf-shadow.png',
@@ -27,6 +28,10 @@ export function showSatellite(lat, long) {
   //.bindPopup('A pretty CSS popup.<br> Easily customizable.')
   //.openPopup();
   //let polyline = L.polyline(path, {color: 'red'}).addTo(map);
+}
+
+export function showSatelliteWithNoView(lat, long) {
+  marker.setLatLng([lat, long]);
 }
 //  export function pathSatellite(path){
 //     let polyline = L.polyline(path, {color: 'red'}).addTo(map);
@@ -71,8 +76,10 @@ let mapStyle3 = L.tileLayer(
 );
 
 let currentMapLayer = mapStyle1;
+currentMapLayer = mapStyle1.addTo(map);
 function handleThemes(event) {
   const selectedThemeValue = event.target.value;
+  const mapContainer = document.getElementById("map");
 
   if (currentMapLayer) {
     currentMapLayer.remove();
@@ -82,6 +89,8 @@ function handleThemes(event) {
     pageTitle.style.color = "var(--black)";
     currentMapLayer = mapStyle1.addTo(map);
     marker.setIcon(satelliteIcon);
+
+    mapContainer.style.backgroundColor = "white";
 
     /* Changing root colors from css*/
     document.documentElement.style.setProperty("--primary-color", "#912f40ff");
@@ -97,6 +106,8 @@ function handleThemes(event) {
     currentMapLayer = mapStyle2.addTo(map);
     marker.setIcon(satelliteIcon2);
 
+    mapContainer.style.backgroundColor = "black";
+
     /* Changing root colors from css*/
     document.documentElement.style.setProperty("--primary-color", "#7f7f7fff");
     document.documentElement.style.setProperty(
@@ -111,6 +122,8 @@ function handleThemes(event) {
     currentMapLayer = mapStyle3.addTo(map);
     marker.setIcon(satelliteIcon2);
 
+    mapContainer.style.backgroundColor = "black";
+
     /* Changing root colors from css*/
     document.documentElement.style.setProperty("--primary-color", "#140152ff");
     document.documentElement.style.setProperty(
@@ -122,24 +135,3 @@ function handleThemes(event) {
     document.documentElement.style.setProperty("--extra-color", "#04052eff");
   }
 }
-
-// function cambiarColorSVG(color) {
-//   fetch("../assets/Satellite.js") // Reemplaza 'ruta/a/mi_archivo.svg' con la URL de tu archivo SVG
-//     .then((response) => response.text())
-//     .then((svgData) => {
-//       const parser = new DOMParser();
-//       const svgDocument = parser.parseFromString(svgData, "image/svg+xml");
-//       const svgElement = svgDocument.documentElement;
-
-//       svgElement.setAttribute("fill", color);
-
-//       const svgContainer = document.getElementById("svgContainer");
-//       svgContainer.innerHTML = "";
-//       svgContainer.appendChild(svgElement);
-//     })
-//     .catch((error) => {
-//       console.error("Error al cargar el archivo SVG:", error);
-//     });
-// }
-
-// cambiarColorSVG("red");
