@@ -45,10 +45,7 @@ body {
 .leaflet-control-attribution {
   display: none;
 }
-/*Map Countries*/
-/* g .leaflet-interactive {
-  stroke: var(--secondary-color);
-} */
+/*Positioning satellite*/
 
 
 /*MAP STYLES*/
@@ -120,7 +117,6 @@ body {
   padding: 6px 8px;
   font: 2rem Arial, Helvetica, sans-serif;
   background: var(--secondary-color);
-  background: var(--primary-color);
   box-shadow: 0 0 15px var(--extra-color);
   border-radius: 5px;
   text-align: center;
@@ -132,4 +128,5 @@ body {
 }
 .info p {
   font-size: 1.2rem;
+  color: var(--fonts-color);
 }

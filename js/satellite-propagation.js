@@ -41,13 +41,12 @@ export function position(tleLine1, tleLine2) {
   let latitude = positionGd.latitude;
   //height    = positionGd.height;
 
-    //  Convert the RADIANS to DEGREES.
-    let longitudeDeg = satellite.degreesLong(longitude)
-    let latitudeDeg  = satellite.degreesLat(latitude);
+  //  Convert the RADIANS to DEGREES.
+  let longitudeDeg = satellite.degreesLong(longitude);
+  let latitudeDeg = satellite.degreesLat(latitude);
 
-    return {
-            lat: latitudeDeg,
-            long: longitudeDeg
-        }
-
+  return {
+    lat: latitudeDeg,
+    long: longitudeDeg,
+  };
 }

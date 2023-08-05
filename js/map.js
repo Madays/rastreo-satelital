@@ -1,50 +1,47 @@
-import data from '../assets/data.js';
+import data from "../assets/data.js";
 let map = L.map("map");
-map.setView([0,0], 3);
-let satelliteIcon = L.icon({
-    iconUrl: '../assets/satellite1.svg',
-    iconSize:     [38, 45],
-    iconAnchor:   [0, 0],
-    popupAnchor:  [-3, -76]
-});
+map.setView([0, 0], 3);
 let satelliteIcon1 = L.icon({
-  iconUrl: '../assets/satellite2.svg',
-  iconSize:     [38, 45],
-  iconAnchor:   [0, 0],
-  popupAnchor:  [-3, -76]
+  iconUrl: "../assets/satellite1.svg",
+  iconSize: [38, 45],
+  iconAnchor: [0, 0],
+  popupAnchor: [-3, -76],
 });
 let satelliteIcon2 = L.icon({
-  iconUrl: '../assets/satellite2.svg',
-  iconSize:     [38, 45],
-  iconAnchor:   [0, 0],
-  popupAnchor:  [-3, -76]
+  iconUrl: "../assets/satellite2.svg",
+  iconSize: [38, 45],
+  iconAnchor: [0, 0],
+  popupAnchor: [-3, -76],
 });
 
-let marker = L.marker([0,0],{icon:satelliteIcon}).addTo(map)
+let marker = L.marker([0, 0], {
+  icon: satelliteIcon1,
+  id: "satellite-icon",
+}).addTo(map);
 
 //geojson del mundo
 let geojson = L.geoJson(data).addTo(map);
 
 function highlightFeature(layer) {
-    //var layer = e.target;
+  //var layer = e.target;
 
-    layer.setStyle({
-        weight: 5,
-        color: 'var(--primary-color)',
-        dashArray: '',
-        fillOpacity: 0.7
-    });
+  layer.setStyle({
+    weight: 5,
+    color: "var(--primary-color)",
+    dashArray: "",
+    fillOpacity: 0.7,
+  });
 
-    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-    }
+  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+    layer.bringToFront();
+  }
 
-    info.update(layer.feature.properties);
+  info.update(layer.feature.properties);
 }
 
 function resetHighlight(layer) {
-    geojson.resetStyle(layer);
-    //info.update();
+  geojson.resetStyle(layer);
+  //info.update();
 }
 
 /*function zoomToFeature(e) {
@@ -67,52 +64,54 @@ geojson = L.geoJson(data, {
 var info = L.control();
 
 info.onAdd = function (map) {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-    this.update();
-    return this._div;
+  this._div = L.DomUtil.create("div", "info"); // create a div with a class "info"
+  this.update();
+  return this._div;
 };
 
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
-    this._div.innerHTML = '<h4>El pico satelite Platzi-Sat1 esta pasando por</h4>' + '<b>' + (props ? '<p>' + props.name + '</p>' : 'El oceano')
+  this._div.innerHTML =
+    "<h4>El pico satelite Platzi-Sat1 esta pasando por</h4>" +
+    "<b>" +
+    (props ? "<p>" + props.name + "</p>" : "El oceano");
 };
 
 info.addTo(map);
 
-export function showSatellite(lat,long){
-    marker.setLatLng([lat, long])
-
-    let markerInsidePolygon = false;
-    geojson.eachLayer((layer) => {
-        const latLng = marker.getLatLng();
-        resetHighlight(layer)
-        if (layer instanceof L.Polygon && layer.getBounds().contains(latLng)) {
-          markerInsidePolygon = true;
-          highlightFeature(layer)
-          info.update(layer.feature.properties);
-        }
-      });
-
-    if (markerInsidePolygon) {
-
-      console.log('Esta incluido en marker dentro del poligono.');
-    } else {
-      console.log('No esta incluido en marker dentro del poligono.');
-    }
-
-
-        //.bindPopup('A pretty CSS popup.<br> Easily customizable.')
-        //.openPopup();
-    //let polyline = L.polyline(path, {color: 'red'}).addTo(map);
-}
-
-export function pathSatellite(path){
-    L.polyline(path, {color: 'red'}).addTo(map);
-}
-
-
-export function showSatelliteWithNoView(lat, long) {
+export function showSatellite(lat, long) {
   marker.setLatLng([lat, long]);
+
+  let markerInsidePolygon = false;
+  geojson.eachLayer((layer) => {
+    const latLng = marker.getLatLng();
+    resetHighlight(layer);
+    if (layer instanceof L.Polygon && layer.getBounds().contains(latLng)) {
+      markerInsidePolygon = true;
+      highlightFeature(layer);
+      info.update(layer.feature.properties);
+    }
+  });
+
+  if (markerInsidePolygon) {
+    console.log("Esta incluido en marker dentro del poligono.");
+  } else {
+    console.log("No esta incluido en marker dentro del poligono.");
+  }
+
+  //.bindPopup('A pretty CSS popup.<br> Easily customizable.')
+  //.openPopup();
+  //let polyline = L.polyline(path, {color: 'red'}).addTo(map);
+}
+export function focusSatellite (lat, long) {
+  map.setView([lat, long], 3)
+}
+// export function showSatelliteWithNoView(lat, long) {
+//   marker.setLatLng([lat, long]);
+// }
+
+export function pathSatellite(path) {
+  L.polyline(path, { color: "red" }).addTo(map);
 }
 
 const radioButtons = document.getElementsByName("r");
@@ -164,52 +163,67 @@ function handleThemes(event) {
   }
   const pageTitle = document.querySelector(".title");
   if (selectedThemeValue === "1") {
-    pageTitle.style.color = "var(--black)";
+    pageTitle.style.color = "var(--fonts-color)";
     currentMapLayer = mapStyle1.addTo(map);
     marker.setIcon(satelliteIcon2);
 
     mapContainer.style.backgroundColor = "white";
 
     /* Changing root colors from css*/
-    document.documentElement.style.setProperty("--primary-color", "#00a6d3ff");
-    document.documentElement.style.setProperty(
-      "--secondary-color",
-      "#00c1e2ff"
+    setNewColors(
+      "#00a6d3ff",
+      "#00c1e2ff",
+      "#080705ff",
+      "#f2f2f2ff",
+      "#00f7ffff"
     );
-    document.documentElement.style.setProperty("--fonts-color", "#080705ff");
-    document.documentElement.style.setProperty("--buttons-color", "#f2f2f2ff");
-    document.documentElement.style.setProperty("--extra-color", "#00f7ffff");
   } else if (selectedThemeValue === "2") {
-    pageTitle.style.color = "var(--baby-powder)";
+    pageTitle.style.color = "var(--extra-color)";
     currentMapLayer = mapStyle2.addTo(map);
     marker.setIcon(satelliteIcon2);
 
     mapContainer.style.backgroundColor = "black";
 
     /* Changing root colors from css*/
-    document.documentElement.style.setProperty("--primary-color", "#7f7f7fff");
-    document.documentElement.style.setProperty(
-      "--secondary-color",
-      "#a5a5a5ff"
+
+    setNewColors(
+      "#7f7f7fff",
+      "#a5a5a5ff",
+      "#595959ff",
+      "#ccccccff",
+      "#f2f2f2ff"
     );
-    document.documentElement.style.setProperty("--fonts-color", "#595959ff");
-    document.documentElement.style.setProperty("--buttons-color", "#ccccccff");
-    document.documentElement.style.setProperty("--extra-color", "#f2f2f2ff");
   } else if (selectedThemeValue === "3") {
-    pageTitle.style.color = "var(--baby-powder)";
+    pageTitle.style.color = "var(--fonts-color)";
     currentMapLayer = mapStyle3.addTo(map);
     marker.setIcon(satelliteIcon2);
 
     mapContainer.style.backgroundColor = "black";
 
     /* Changing root colors from css*/
-    document.documentElement.style.setProperty("--primary-color", "#140152ff");
-    document.documentElement.style.setProperty(
-      "--secondary-color",
-      "#22007cff"
+    setNewColors(
+      "#140152ff",
+      "#22007cff",
+      "#f2f2f2ff",
+      "#0d00a4ff",
+      "#04052eff"
     );
-    document.documentElement.style.setProperty("--fonts-color", "#f2f2f2ff");
-    document.documentElement.style.setProperty("--buttons-color", "#0d00a4ff");
-    document.documentElement.style.setProperty("--extra-color", "#04052eff");
   }
+}
+
+function setNewColors(
+  primaryColor,
+  secondaryColor,
+  fontsColor,
+  buttonsColor,
+  extraColor
+) {
+  document.documentElement.style.setProperty("--primary-color", primaryColor);
+  document.documentElement.style.setProperty(
+    "--secondary-color",
+    secondaryColor
+  );
+  document.documentElement.style.setProperty("--fonts-color", fontsColor);
+  document.documentElement.style.setProperty("--buttons-color", buttonsColor);
+  document.documentElement.style.setProperty("--extra-color", extraColor);
 }

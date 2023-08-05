@@ -3,7 +3,6 @@ import { position } from "./satellite-propagation.js";
 import {
   showSatellite,
   pathSatellite,
-  showSatelliteWithNoView,
 } from "./map.js";
 
 let path = [];
