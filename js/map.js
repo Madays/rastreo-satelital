@@ -4,19 +4,23 @@ let satelliteIcon1 = L.icon({
   iconUrl: "../assets/satellite1.svg",
   iconSize: [38, 45],
   iconAnchor: [0, 0],
-  popupAnchor: [-3, -76],
+  popupAnchor: [19, -22.5],
+  className: "satellite-icon", 
 });
 let satelliteIcon2 = L.icon({
   iconUrl: "../assets/satellite2.svg",
   iconSize: [38, 45],
   iconAnchor: [0, 0],
-  popupAnchor: [-3, -76],
+  popupAnchor: [19, -22.5],
+  className: "satellite-icon", 
 });
 
-let marker = L.marker([0, 0], {
+export let marker = L.marker([0, 0], {
   icon: satelliteIcon1,
-  id: "satellite-icon",
-}).addTo(map);
+  className: "satellite-icon-marker", 
+}).addTo(map)
+
+
 
 //geojson del mundo
 // let geojson = L.geoJson(data).addTo(map);
@@ -85,6 +89,34 @@ geojson = L.geoJson(data, {
 // };
 
 // info.addTo(map);
+
+// Datos prehechos de ejemplo para el cuadro emergente
+const satelliteData = {
+  name: "Satélite de ejemplo",
+  latitude: 12.345,
+  longitude: 67.89,
+  status: "Operativo",
+  altitude: "500 km",
+  // Agrega más datos según tus necesidades
+};
+
+// Función para mostrar el cuadro emergente con los datos prehechos
+export function showSatellitePopup(marker, satelliteData) {
+  const popupContent = `
+  <div id="satellite-popup">
+    <h3>${satelliteData.name}</h3>
+    <p>Latitud: ${satelliteData.latitude}</p>
+    <p>Longitud: ${satelliteData.longitude}</p>
+    <p>Estado: ${satelliteData.status}</p>
+    <p>Altitud: ${satelliteData.altitude}</p>
+    <!-- Agrega más información del satélite según tus datos -->
+  </div>
+  `;
+
+
+  marker.bindPopup(popupContent).openPopup();
+}
+// showSatellitePopup(marker, satelliteData);
 
 export function showSatellite(lat, long) {
   marker.setLatLng([lat, long]);
@@ -167,7 +199,7 @@ function handleThemes(event) {
   if (selectedThemeValue === "1") {
     // pageTitle.style.color = "var(--fonts-color)";
     currentMapLayer = mapStyle1.addTo(map);
-    marker.setIcon(satelliteIcon2);
+    marker.setIcon(satelliteIcon1);
 
     mapContainer.style.backgroundColor = "white";
 
