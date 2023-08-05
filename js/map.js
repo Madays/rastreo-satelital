@@ -20,7 +20,15 @@ let marker = L.marker([0, 0], {
 }).addTo(map);
 
 //geojson del mundo
-let geojson = L.geoJson(data).addTo(map);
+// let geojson = L.geoJson(data).addTo(map);
+
+let geojson = L.geoJson(data, {
+  style: function (feature) {
+    return {
+      className: "countries-geojson",
+    };
+  },
+}).addTo(map);
 
 function highlightFeature(layer) {
   //var layer = e.target;
@@ -103,8 +111,8 @@ export function showSatellite(lat, long) {
   //.openPopup();
   //let polyline = L.polyline(path, {color: 'red'}).addTo(map);
 }
-export function focusSatellite (lat, long) {
-  map.setView([lat, long], 3)
+export function focusSatellite(lat, long) {
+  map.setView([lat, long], 3);
 }
 // export function showSatelliteWithNoView(lat, long) {
 //   marker.setLatLng([lat, long]);
