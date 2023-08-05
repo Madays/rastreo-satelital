@@ -46,7 +46,6 @@ body {
 .leaflet-control-attribution {
   display: none;
 }
-/*Positioning satellite*/
 
 /*MAP STYLES*/
 #map {
@@ -83,6 +82,13 @@ body {
   stroke-opacity: 1;
   stroke-width: 1;
   fill: var(--secondary-color);
+}
+
+
+.leaflet-popup .leaflet-popup-content-wrapper, .leaflet-popup-tip-container .leaflet-popup-tip {
+  background-color: var(--primary-color);
+  color: var(--fonts-color);
+  box-shadow: -1px 1px 10px var(--extra-color);
 }
 
 
