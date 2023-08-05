@@ -1,6 +1,5 @@
 import data from "../assets/data.js";
-let map = L.map("map");
-map.setView([0, 0], 3);
+export let map = L.map("map");
 let satelliteIcon1 = L.icon({
   iconUrl: "../assets/satellite1.svg",
   iconSize: [38, 45],
