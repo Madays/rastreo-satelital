@@ -123,6 +123,7 @@ export function showSatellite(lat, long) {
 
   geojson.eachLayer((layer) => {
     const latLng = marker.getLatLng();
+
     resetHighlight(layer);
 
     if (layer instanceof L.Polygon && layer.getBounds().contains(latLng)) {
