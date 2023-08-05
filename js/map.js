@@ -2,13 +2,13 @@ import data from '../assets/data.js';
 let map = L.map("map");
 map.setView([0,0], 3);
 let satelliteIcon = L.icon({
-    iconUrl: '../assets/satellite.png',
+    iconUrl: '../assets/satellite1.svg',
     iconSize:     [38, 45],
     iconAnchor:   [0, 0],
     popupAnchor:  [-3, -76]
 });
 let satelliteIcon1 = L.icon({
-  iconUrl: '../assets/satellite.svg',
+  iconUrl: '../assets/satellite2.svg',
   iconSize:     [38, 45],
   iconAnchor:   [0, 0],
   popupAnchor:  [-3, -76]
@@ -30,7 +30,7 @@ function highlightFeature(layer) {
 
     layer.setStyle({
         weight: 5,
-        color: '#666',
+        color: 'var(--primary-color)',
         dashArray: '',
         fillOpacity: 0.7
     });
@@ -171,14 +171,14 @@ function handleThemes(event) {
     mapContainer.style.backgroundColor = "white";
 
     /* Changing root colors from css*/
-    document.documentElement.style.setProperty("--primary-color", "#912f40ff");
+    document.documentElement.style.setProperty("--primary-color", "#00a6d3ff");
     document.documentElement.style.setProperty(
       "--secondary-color",
-      "#702632ff"
+      "#00c1e2ff"
     );
-    document.documentElement.style.setProperty("--fonts-color", "#fffffaff");
-    document.documentElement.style.setProperty("--buttons-color", "#40434eff");
-    document.documentElement.style.setProperty("--extra-color", "#080705ff");
+    document.documentElement.style.setProperty("--fonts-color", "#080705ff");
+    document.documentElement.style.setProperty("--buttons-color", "#f2f2f2ff");
+    document.documentElement.style.setProperty("--extra-color", "#00f7ffff");
   } else if (selectedThemeValue === "2") {
     pageTitle.style.color = "var(--baby-powder)";
     currentMapLayer = mapStyle2.addTo(map);

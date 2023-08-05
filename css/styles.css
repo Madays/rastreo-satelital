@@ -1,10 +1,8 @@
 :root {
   /*LIGHT THEME*/
-  --black: #080705ff;
-  --charcoal: #40434eff;
-  --wine: #702632ff;
-  --cordovan: #912f40ff;
-  --baby-powder: #fffffaff;
+  --aqua: #00f7ffff;
+  --aero: #00c1e2ff;
+  --blue-green: #0099ccff;
 
   /*DARK THEME*/
   --davys-gray: #595959ff;
@@ -21,11 +19,11 @@
   --duke-blue: #0d00a4ff;
 
   /*COLORS TO USE*/
-  --primary-color: #912f40ff;
-  --secondary-color: #702632ff;
-  --fonts-color: #fffffaff;
-  --buttons-color: #40434eff;
-  --extra-color: #080705ff;
+  --primary-color: #00a6d3ff;
+  --secondary-color: #00c1e2ff;
+  --fonts-color: #080705ff;
+  --buttons-color: #f2f2f2ff;
+  --extra-color: #00f7ffff;
 }
 
 /* .leaflet-control-container {
@@ -43,6 +41,16 @@ body {
   overflow-x: hidden;
 }
 
+/*Hides map stats from the footer*/
+.leaflet-control-attribution {
+  display: none;
+}
+/*Map Countries*/
+/* g .leaflet-interactive {
+  stroke: var(--secondary-color);
+} */
+
+
 /*MAP STYLES*/
 #map {
   width: 100vw;
@@ -57,9 +65,14 @@ body {
 }
 
 .title {
+  width: 100vw;
   position: absolute;
   top: 10px;
-  left: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-decoration: underline;
+  font-size: 1.5rem;
 }
 
 .hud-container {
@@ -106,13 +119,17 @@ body {
 .info {
   padding: 6px 8px;
   font: 2rem Arial, Helvetica, sans-serif;
-  background: white;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background: var(--secondary-color);
+  background: var(--primary-color);
+  box-shadow: 0 0 15px var(--extra-color);
   border-radius: 5px;
   text-align: center;
 }
 .info h4 {
   margin: 0 0 5px;
-  color: #777;
+  color: var(--fonts-color);
+  font-size: 1rem;
+}
+.info p {
+  font-size: 1.2rem;
 }
