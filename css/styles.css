@@ -86,16 +86,13 @@ body {
 }
 
 
-.title {
+/* .title {
   position: absolute;
   top: 10px;
   left: calc(50vw - 85px);
-  /* display: flex;
-  flex-direction: row;
-  justify-content: center; */
   text-decoration: underline;
   font-size: 1.5rem;
-}
+} */
 
 .hud-container {
   position: absolute;

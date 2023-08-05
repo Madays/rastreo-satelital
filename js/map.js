@@ -168,9 +168,9 @@ function handleThemes(event) {
   if (currentMapLayer) {
     currentMapLayer.remove();
   }
-  const pageTitle = document.querySelector(".title");
+  // const pageTitle = document.querySelector(".title");
   if (selectedThemeValue === "1") {
-    pageTitle.style.color = "var(--fonts-color)";
+    // pageTitle.style.color = "var(--fonts-color)";
     currentMapLayer = mapStyle1.addTo(map);
     marker.setIcon(satelliteIcon2);
 
@@ -185,7 +185,7 @@ function handleThemes(event) {
       "#00f7ffff"
     );
   } else if (selectedThemeValue === "2") {
-    pageTitle.style.color = "var(--extra-color)";
+    // pageTitle.style.color = "var(--extra-color)";
     currentMapLayer = mapStyle2.addTo(map);
     marker.setIcon(satelliteIcon2);
 
@@ -201,7 +201,7 @@ function handleThemes(event) {
       "#f2f2f2ff"
     );
   } else if (selectedThemeValue === "3") {
-    pageTitle.style.color = "var(--fonts-color)";
+    // pageTitle.style.color = "var(--fonts-color)";
     currentMapLayer = mapStyle3.addTo(map);
     marker.setIcon(satelliteIcon2);
 
