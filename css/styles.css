@@ -84,8 +84,6 @@ body {
   fill: var(--secondary-color);
 }
 
-
-
 /* .title {
 
 .leaflet-popup .leaflet-popup-content-wrapper, .leaflet-popup-tip-container .leaflet-popup-tip {
@@ -162,4 +160,50 @@ body {
 .info p {
   font-size: 1.2rem;
   color: var(--fonts-color);
+}
+
+/*Satellite Track Modal*/
+.satellite-info-box {
+  /* display: none !important; */
+  width: 280px;
+  /* max-width: 340px; */
+  height: 400px;
+  padding: 20px;
+
+  background-color: var(--primary-color);
+
+  position: absolute;
+  top: 20vh;
+  left: auto;
+  
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  font-size: 0.8rem;
+  color: var(--fonts-color);
+  border-radius: 20px;
+  box-shadow: -1px 1px 10px var(--extra-color);
+
+  transition: 0.2s;
+  transform: translateX(-280px);
+}
+.active-satellite-info-box {
+  transform: translateX(0px);
+}
+.active-satellite-info-box-mobile {
+  transform: translateX(calc(50vw - 140px));
+}
+.satellite-info-box div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.satellite-info-box div h3 {
+  font-size: 1rem;
+}
+.satellite-info-box div p {
+  font-size: 0.9rem;
 }

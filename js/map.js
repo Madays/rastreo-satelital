@@ -122,9 +122,9 @@ export function showSatellite(lat, long) {
   marker.setLatLng([lat, long]);
 
   geojson.eachLayer((layer) => {
-    console.log('layer', layer)
+    // console.log('layer', layer)
     const latLng = marker.getLatLng();
-    console.log('satelite', latLng)
+    // console.log('satelite', latLng)
     resetHighlight(layer);
 
     if (layer instanceof L.Polygon && layer.getBounds().contains(latLng)) {
