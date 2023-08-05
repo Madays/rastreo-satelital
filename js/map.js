@@ -43,7 +43,7 @@ function highlightFeature(layer) {
     layer.bringToFront();
   }
 
-  info.update(layer.feature.properties);
+  //info.update(layer.feature.properties);
 }
 
 function resetHighlight(layer) {
@@ -68,43 +68,38 @@ geojson = L.geoJson(data, {
     //onEachFeature: onEachFeature
 }).addTo(map);*/
 
-var info = L.control();
+// var info = L.control();
 
-info.onAdd = function (map) {
-  this._div = L.DomUtil.create("div", "info"); // create a div with a class "info"
-  this.update();
-  return this._div;
-};
+// info.onAdd = function (map) {
+//   this._div = L.DomUtil.create("div", "info"); // create a div with a class "info"
+//   this.update();
+//   return this._div;
+// };
 
 // method that we will use to update the control based on feature properties passed
-info.update = function (props) {
-  this._div.innerHTML =
-    "<h4>El pico satelite Platzi-Sat1 esta pasando por</h4>" +
-    "<b>" +
-    (props ? "<p>" + props.name + "</p>" : "El oceano");
-};
+// info.update = function (props) {
+//   this._div.innerHTML =
+//     "<h4>El pico satelite Platzi-Sat1 esta pasando por</h4>" +
+//     "<b>" +
+//     (props ? "<p>" + props.name + "</p>" : "El oceano");
+// };
 
-info.addTo(map);
+// info.addTo(map);
 
 export function showSatellite(lat, long) {
   marker.setLatLng([lat, long]);
 
-  let markerInsidePolygon = false;
   geojson.eachLayer((layer) => {
+    console.log('layer', layer)
     const latLng = marker.getLatLng();
+    console.log('satelite', latLng)
     resetHighlight(layer);
+
     if (layer instanceof L.Polygon && layer.getBounds().contains(latLng)) {
-      markerInsidePolygon = true;
       highlightFeature(layer);
-      info.update(layer.feature.properties);
+      //info.update(layer.feature.properties);
     }
   });
-
-  if (markerInsidePolygon) {
-    console.log("Esta incluido en marker dentro del poligono.");
-  } else {
-    console.log("No esta incluido en marker dentro del poligono.");
-  }
 
   //.bindPopup('A pretty CSS popup.<br> Easily customizable.')
   //.openPopup();

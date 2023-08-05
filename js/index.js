@@ -3,7 +3,6 @@ import { position } from "./satellite-propagation.js";
 import {
   map,
   showSatellite,
-  pathSatellite,
 } from "./map.js";
 
 let path = [];
@@ -13,7 +12,7 @@ getTle()
     map.setView([positionSatellite.lat, positionSatellite.long], 3);
     path.push([positionSatellite.lat, positionSatellite.long]);
     showSatellite(positionSatellite.lat, positionSatellite.long);
-    pathSatellite(path);
+    //pathSatellite(path);
   })
   .catch((error) => {
     console.error("Error:", error);
@@ -24,10 +23,10 @@ setInterval(() => {
     .then((positionSatellite) => {
       path.push([positionSatellite.lat, positionSatellite.long]);
       showSatellite(positionSatellite.lat, positionSatellite.long);
-      pathSatellite(path);
+      //pathSatellite(path);
       //showSatelliteWithNoView(positionSatellite.lat, positionSatellite.long)
     })
     .catch((error) => {
       console.error("Error:", error);
     });
-}, 10000);
+}, 100);
