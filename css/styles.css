@@ -39,6 +39,7 @@
 body {
   font-size: 62.5%;
   overflow-x: hidden;
+  font-family: Arial;
 }
 
 /*Hides map stats from the footer*/
@@ -46,7 +47,6 @@ body {
   display: none;
 }
 /*Positioning satellite*/
-
 
 /*MAP STYLES*/
 #map {
@@ -61,13 +61,29 @@ body {
   z-index: -2;
 }
 
+.leaflet-top .leaflet-control-zoom {
+  border: 0.1px solid var(--fonts-color);
+}
+.leaflet-control-zoom .leaflet-control-zoom-in {
+  border-bottom: 0.1px solid var(--fonts-color);
+}
+.leaflet-control-zoom .leaflet-control-zoom-out {
+  border-top: 0.1px solid var(--fonts-color);
+}
+.leaflet-control-zoom .leaflet-control-zoom-in,
+.leaflet-control-zoom .leaflet-control-zoom-out {
+  background-color: var(--secondary-color);
+  color: var(--fonts-color);
+}
+
 .title {
-  width: 100vw;
   position: absolute;
+  padding: auto;
   top: 10px;
-  display: flex;
+  left: calc(50vw - 85px);
+  /* display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: center; */
   text-decoration: underline;
   font-size: 1.5rem;
 }
