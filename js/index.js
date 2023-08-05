@@ -9,7 +9,7 @@ let path = [];
 getTle()
   .then((tle) => position(tle[1], tle[2]))
   .then((positionSatellite) => {
-    map.setView([positionSatellite.lat, positionSatellite.long], 3);
+    map.setView([positionSatellite.lat, positionSatellite.long], 2);
     path.push([positionSatellite.lat, positionSatellite.long]);
     showSatellite(positionSatellite.lat, positionSatellite.long);
     //pathSatellite(path);
@@ -29,4 +29,4 @@ setInterval(() => {
     .catch((error) => {
       console.error("Error:", error);
     });
-}, 100);
+}, 10000);

@@ -8,11 +8,11 @@ export function position(tleLine1, tleLine2) {
   var positionEci = positionAndVelocity.position,
     velocityEci = positionAndVelocity.velocity;
 
-  // Set the Observer at 122.03 West by 36.96 North, in RADIANS
+  // Set the Observer at -71.5375 West by -16.4090 North, in RADIANS
   var observerGd = {
-    longitude: satellite.degreesToRadians(-122.0308),
-    latitude: satellite.degreesToRadians(36.9613422),
-    height: 0.37,
+    longitude: satellite.degreesToRadians(-71.5375),
+    latitude: satellite.degreesToRadians(-16.4090),
+    height: 2300,
   };
 
   // You will need GMST for some of the coordinate transforms.
@@ -20,9 +20,9 @@ export function position(tleLine1, tleLine2) {
   var gmst = satellite.gstime(new Date());
   // You can get ECF, Geodetic, Look Angles, and Doppler Factor.
   let positionEcf = satellite.eciToEcf(positionEci, gmst);
-  //observerEcf   = satellite.geodeticToEcf(observerGd),
+  let observerEcf   = satellite.geodeticToEcf(observerGd);
   let positionGd = satellite.eciToGeodetic(positionEci, gmst);
-  //lookAngles    = satellite.ecfToLookAngles(observerGd, positionEcf),
+  let lookAngles    = satellite.ecfToLookAngles(observerGd, positionEcf);
   //dopplerFactor = satellite.dopplerFactor(observerCoordsEcf, positionEcf, velocityEcf);
 
   // The coordinates are all stored in key-value pairs.
@@ -32,21 +32,24 @@ export function position(tleLine1, tleLine2) {
   //     satelliteZ = positionEci.z;
 
   // Look Angles may be accessed by `azimuth`, `elevation`, `range_sat` properties.
-  // var azimuth   = lookAngles.azimuth,
-  //     elevation = lookAngles.elevation,
-  //     rangeSat  = lookAngles.rangeSat;
+  var azimuth   = lookAngles.azimuth,
+      elevation = lookAngles.elevation,
+      rangeSat  = lookAngles.rangeSat;
 
   // Geodetic coords are accessed via `longitude`, `latitude`, `height`.
   let longitude = positionGd.longitude;
   let latitude = positionGd.latitude;
-  //height    = positionGd.height;
+  let height    = positionGd.height;
 
   //  Convert the RADIANS to DEGREES.
   let longitudeDeg = satellite.degreesLong(longitude);
   let latitudeDeg = satellite.degreesLat(latitude);
-
   return {
     lat: latitudeDeg,
     long: longitudeDeg,
+    height: height,
+    elevation: elevation,
+    azimuth: azimuth,
+    rangeSat: rangeSat
   };
 }

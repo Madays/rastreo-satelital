@@ -5,19 +5,19 @@ let satelliteIcon1 = L.icon({
   iconSize: [38, 45],
   iconAnchor: [0, 0],
   popupAnchor: [19, -22.5],
-  className: "satellite-icon", 
+  className: "satellite-icon",
 });
 let satelliteIcon2 = L.icon({
   iconUrl: "../assets/satellite2.svg",
   iconSize: [38, 45],
   iconAnchor: [0, 0],
   popupAnchor: [19, -22.5],
-  className: "satellite-icon", 
+  className: "satellite-icon",
 });
 
 export let marker = L.marker([0, 0], {
   icon: satelliteIcon1,
-  className: "satellite-icon-marker", 
+  className: "satellite-icon-marker",
 }).addTo(map)
 
 
@@ -122,9 +122,7 @@ export function showSatellite(lat, long) {
   marker.setLatLng([lat, long]);
 
   geojson.eachLayer((layer) => {
-    console.log('layer', layer)
     const latLng = marker.getLatLng();
-    console.log('satelite', latLng)
     resetHighlight(layer);
 
     if (layer instanceof L.Polygon && layer.getBounds().contains(latLng)) {
