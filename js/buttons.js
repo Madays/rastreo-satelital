@@ -43,6 +43,17 @@ setInterval(() => {
       infoPosition.innerText = `Lat: ${positionSatellite.lat.toFixed(
         5
       )} Long: ${positionSatellite.long.toFixed(5)}`;
+
+      const infoAzimut = document.getElementById("satellite-info-azimut");
+      infoAzimut.innerText = `Azimut: ${positionSatellite.azimuth.toFixed(3)} º`;
+      const infoElevation = document.getElementById("satellite-info-elevation");
+      infoElevation.innerText = `Elevación: ${positionSatellite.elevation.toFixed(
+        3
+      )} º`;
+      const infoDistance = document.getElementById("satellite-info-distance");
+      infoDistance.innerText = `Altura: ${positionSatellite.height.toFixed(3)}`;
+      const infoRange = document.getElementById("satellite-info-range");
+      infoRange.innerText = `Rango: ${positionSatellite.rangeSat.toFixed(3)}`
     });
 }, 1000);
 

@@ -109,7 +109,6 @@ export function showSatellitePopup(marker, satelliteData) {
     <p>Longitud: ${satelliteData.longitude}</p>
     <p>Estado: ${satelliteData.status}</p>
     <p>Altitud: ${satelliteData.altitude}</p>
-    <!-- Agrega más información del satélite según tus datos -->
   </div>
   `;
 
