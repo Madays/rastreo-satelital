@@ -1,14 +1,14 @@
 import data from "../assets/data.js";
 export let map = L.map("map");
 let satelliteIcon1 = L.icon({
-  iconUrl: "../assets/satellite1.svg",
+  iconUrl: "assets/satellite1.svg",
   iconSize: [38, 45],
   iconAnchor: [0, 0],
   popupAnchor: [19, -22.5],
   className: "satellite-icon",
 });
 let satelliteIcon2 = L.icon({
-  iconUrl: "../assets/satellite2.svg",
+  iconUrl: "assets/satellite2.svg",
   iconSize: [38, 45],
   iconAnchor: [0, 0],
   popupAnchor: [19, -22.5],
